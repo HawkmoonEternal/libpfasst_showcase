@@ -30,13 +30,18 @@ https://gitlab.inria.fr/dynres/dyn-procs/dyn_procs_setup/-/tree/cluster_setup?re
 
 
 If these spack packages are not already installed, run:
+```
+# (spack install dyn_ompi) # This package will be automatically installed when intalling libpfasst or dyn_hypre
 spack install libpfasst
 spack install dyn_hypre
+```
 
 Load the following spack packages:
+```
 spack load dyn_ompi
 spack load libpfasst
 spack load dyn_hypre
+```
 
 Then run the following commands:
 
