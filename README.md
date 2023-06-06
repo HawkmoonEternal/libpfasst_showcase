@@ -54,7 +54,9 @@ make LIBPFASST=/path/to/LibPFASST/ DYNOMPI_DIR=/path/to/dyn_ompi HYPRE_DIR=/path
 ```
 
 To display the paths to the install dirs of the spack packages, run:
+```
 spack find --paths <package_name>
+```
 
 ## Setup without Spack
 Install [dyn_ompi](https://gitlab.inria.fr/dynres/dyn-procs/ompi.git), [libpfasst](https://gitlab.inria.fr/dynres/applications/libpfasst) and [hypre](https://github.com/hypre-space/hypre.git), and make sure that they are all correctly linked to dyn_ompi.
