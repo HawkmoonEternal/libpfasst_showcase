@@ -21,7 +21,22 @@ https://github.com/boi4/showcase_dyn_libpfasst/assets/33987679/701e49cf-34ab-4c6
 
 ### Compilation instructions
 
-To compile this program, make sure that you have built the dynamic version of LibPFASST that can be found [here](https://github.com/boi4/libpfasst).
+To compile this program, make sure that you have built the dynamic version of LibPFASST, Hypre and OMPI.
+
+## Setup with Spack (recommended)
+
+Find the corresponding spack packages here:
+https://gitlab.inria.fr/dynres/dyn-procs/dyn_procs_setup/-/tree/cluster_setup?ref_type=heads
+
+
+If these spack packages are not already installed, run:
+spack install libpfasst
+spack install dyn_hypre
+
+Load the following spack packages:
+spack load dyn_ompi
+spack load libpfasst
+spack load dyn_hypre
 
 Then run the following commands:
 
@@ -29,16 +44,26 @@ Then run the following commands:
 # clone the repository
 git clone https://github.com/boi4/showcase_dyn_libpfasst.git && cd showcase_dyn_libpfasst
 
-# clone hypre
-git clone git clone https://github.com/hypre-space/hypre.git
-
-# build hypre
-cd hypre/src && ./configure --disable-fortran && make -j && cd ../..
-
 # finally, compile this project
-make LIBPFASST=/path/to/LibPFASST/
+make LIBPFASST=/path/to/LibPFASST/ DYNOMPI_DIR=/path/to/dyn_ompi HYPRE_DIR=/path/to/hypre
 ```
 
+To display the paths to the install dirs of the spack packages, run:
+spack find --paths <package_name>
+
+## Setup without Spack
+Install [dyn_ompi](https://gitlab.inria.fr/dynres/dyn-procs/ompi.git), [libpfasst](https://gitlab.inria.fr/dynres/applications/libpfasst) and [hypre](https://github.com/hypre-space/hypre.git), and make sure that they are all correctly linked to dyn_ompi.
+You might need to configure hypre with --disable-fortran and correct integer size.
+
+Then run the following commands:
+
+```
+# clone the repository
+git clone https://github.com/boi4/showcase_dyn_libpfasst.git && cd showcase_dyn_libpfasst
+
+# finally, compile this project
+make LIBPFASST=/path/to/LibPFASST/ DYNOMPI_DIR=/path/to/dyn_ompi HYPRE_DIR=/path/to/hypre
+```
 
 ### Usage
 
